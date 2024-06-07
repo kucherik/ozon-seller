@@ -27,11 +27,11 @@ class CategoriesService extends AbstractService
     public function tree(int $categoryId = null, string $language = 'RU')
     {
         $query = array_filter([
-            'category_id' => $categoryId,
+            'description_category_id' => $categoryId,
             'language'    => strtoupper($language),
         ]);
 
-        return $this->request('POST', '/v1/category/tree', $query);
+        return $this->request('POST', '/v1/description-category/tree', $query);
     }
 
     /**
@@ -43,15 +43,16 @@ class CategoriesService extends AbstractService
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function attributes(int $categoryId, string $language = 'RU', array $query = [])
+    public function attributes(int $categoryId, int $typeId, string $language = 'RU', array $query = [])
     {
         $query = ArrayHelper::pick($query, ['attribute_type']);
         $query = TypeCaster::castArr($query, ['attribute_type' => 'str']);
         $query = array_merge([
-            'category_id' => $categoryId,
+            'description_category_id' => $categoryId,
             'language'    => strtoupper($language),
+            'type_id'    => $typeId,
         ], $query);
 
-        return $this->request('POST', '/v1/category/attribute', $query);
+        return $this->request('POST', '/v1/description-category/attribute', $query);
     }
 }

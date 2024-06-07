@@ -14,7 +14,7 @@ return [
     'complex_attributes' => ['type' => 'array', 'requiredCreate' => false],
 
     'barcode'     => ['type' => 'str', 'requiredCreate' => false],
-    'category_id' => ['type' => 'int', 'requiredCreate' => true],
+    'description_category_id' => ['type' => 'int', 'requiredCreate' => true],
 
     'width'          => ['type' => 'int', 'requiredCreate' => true],
     'height'         => ['type' => 'int', 'requiredCreate' => true],
